@@ -32,7 +32,7 @@ public class Examen1P1_HaroldRodas {
 
             for (int j = 1; x == y; j++) {
                 if (palUno.charAt(i + 1) == palDos.charAt(j)) {
-                    
+
                 }
             }
         }
@@ -42,15 +42,31 @@ public class Examen1P1_HaroldRodas {
             System.out.println("La cadena: " + palUno + "NO Contiene la cadena: " + palDos);
         }
     }
-    
+
     public static void figura(int num) {
-        for (int i = 0; i != num; i++ ) {
-            for (int j = 0; j != i ; j++) {
-                System.out.print("* ");
+        for (int i = 0; i != num + 3; i++) {
+            for (int j = 0; j <= num; j++) {
+                if (i == 0 || i == num + 2) {
+                    System.out.print("-");
+                }
+                for (int k = 0 ; k <= num; k++) {
+                    
+                    if (j == (num / 2) && i <= (num / 2)) {
+                        System.out.print("*");
+                    }
+                }
+                
+                if (i == num + 1 || (j == 0 && i >= ((num / 2) + 1)) || (j == num && i >= ((num / 2) + 1)) || (j == (num / 2) && i <= ((num / 2))) || j == (num + 1 / 2) + i - 1|| j == (num / 2) - i + 1 || i == (num / 2) + 1 ) {
+                    System.out.print("*");                    
+                }else {
+                    System.out.print(" ");
+                }
+
             }
             System.out.println("");
         }
     }
+
     public static void main(String[] args) {
         System.out.println("Menu");
         System.out.println("1. Contains sin Contains");
