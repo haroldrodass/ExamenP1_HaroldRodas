@@ -1,24 +1,19 @@
 package examen1p1_haroldrodas;
 
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class Examen1P1_HaroldRodas {
 
     static Scanner sc = new Scanner(System.in);
 
     public static int combinatorio(int n, int r) {
-
-        int x = n - r;
-        int nume = (factorial(n));
-        int denom = (factorial(r)) * (factorial(x));
-        int ecuacion = nume / denom;
-        return ecuacion;
+        int resultado = factorial(n) / (factorial(r) * factorial(n - r));
+        return resultado;
     }
 
     public static int factorial(int num) {
         int fact = 1;
-        for (int i = num; i != 1; i--) {
+        for (int i = 2; i <= num; i++) {
             fact *= i;
         }
         return fact;
@@ -26,13 +21,11 @@ public class Examen1P1_HaroldRodas {
 
     public static void loContiene(String palUno, String palDos) {
         int temp = 0;
-        for (int i = 0; i >= palUno.length(); i++) {
-            char y = palUno.charAt(i);
-            char x = palDos.charAt(0);
-
-            for (int j = 1; x == y; j++) {
-                if (palUno.charAt(i + 1) == palDos.charAt(j)) {
-
+        for (int i = 0; i <= palUno.length() - palDos.length(); i++) {
+            temp = 0;
+            for (int j = 0; j < palDos.length(); j++) {
+                if (palUno.charAt(i + j) == palDos.charAt(j)) {
+                    temp++;
                 }
             }
         }
@@ -44,26 +37,30 @@ public class Examen1P1_HaroldRodas {
     }
 
     public static void figura(int num) {
-        for (int i = 0; i != num + 3; i++) {
-            for (int j = 0; j <= num; j++) {
+        for (int i = 0; i < num + 3; i++) {
+            for (int j = 0; j < num + 2; j++) {
                 if (i == 0 || i == num + 2) {
                     System.out.print("-");
                 }
-                for (int k = 0 ; k <= num; k++) {
-                    
-                    if (j == (num / 2) && i <= (num / 2)) {
+                if (i > 0 && i <= num / 2 + 1 && i != num + 2) {
+                    if (i == num / 2 + 1) {
                         System.out.print("*");
+                    } else if (j >= (num / 2 + 1) - (i - 1) && j <= (num / 2 + 1) + (i - 1)) {
+                        System.out.print("*");
+                    } else {
+                        System.out.print(" ");
                     }
                 }
-                
-                if (i == num + 1 || (j == 0 && i >= ((num / 2) + 1)) || (j == num && i >= ((num / 2) + 1)) || (j == (num / 2) && i <= ((num / 2))) || j == (num + 1 / 2) + i - 1|| j == (num / 2) - i + 1 || i == (num / 2) + 1 ) {
-                    System.out.print("*");                    
-                }else {
-                    System.out.print(" ");
+                if (i > num / 2 + 1 && i != num + 2) {
+                    if (i == num + 1) {
+                        System.out.print("*");
+                    } else if (j == 0 || j == num + 1) {
+                        System.out.print("*");
+                    } else {
+                        System.out.print(" ");
+                    }
                 }
-
-            }
-            System.out.println("");
+            } System.out.println();
         }
     }
 
@@ -104,7 +101,7 @@ public class Examen1P1_HaroldRodas {
                         System.out.println("R tiene que ser mayor o igual a 0: ");
                         r = sc.nextInt();
                     }
-                    System.out.println("El Combinatorio C(" + n + "," + r + ")" + " es: " + (combinatorio(n, r)));
+                    System.out.println("El Combinatorio C(" + n + "," + r + ") es: " + combinatorio(n, r));
                     break;
                 case 3:
                     System.out.println("Opcion 3 - Figuras, Figuras y mas Figuras");
@@ -119,7 +116,6 @@ public class Examen1P1_HaroldRodas {
                 default:
                     System.out.println("Opcion no valida!");
                     break;
-
             }
             System.out.println("Menu");
             System.out.println("1. Contains sin Contains");
@@ -129,7 +125,5 @@ public class Examen1P1_HaroldRodas {
             opc = sc.nextInt();
         }
         System.out.println("Saliendo del programa.");
-
     }
-
 }
